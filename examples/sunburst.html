@@ -1,0 +1,1767 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link href="../build/nv.d3.css" rel="stylesheet" type="text/css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.2/d3.min.js" charset="utf-8"></script>
+    <script src="../build/nv.d3.js"></script>
+    <script src="lib/stream_layers.js"></script>
+
+    <style>
+        html, body, svg {
+            margin: 0px;
+            padding: 0px;
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<svg id="mydata"></svg>
+
+<script>
+
+    var chart;
+
+    nv.addGraph(function(filter) {
+        var chartFilter = filter;
+
+        chart = nv.models.sunburstChart();
+
+        // Custom colors
+        chart.color(['#7ab4f9', '#70d158', '#f8932c', '#f88876', '#deacff', '#fbb3ff', '#7ef5ff']);
+
+        chart.options({
+            showLabels: true,
+            labelThreshold: 0.03
+        });
+
+        // Defaults to true
+        chart.groupColorByParent(true);
+
+        // Custom tooltip for the sunburst chart
+        chart.tooltip.valueFormatter(function (d) {
+            d = `
+                <div class="custom-tooltip">
+                    Custom Tooltip: ${d}
+                </div>
+            `
+            return d;
+        });
+
+        // Custom label
+        chart.labelFormat(function(d){
+            return d.name;
+        })
+
+        d3.select("#mydata")
+                .datum(getData())
+                .call(chart);
+
+        nv.utils.windowResize(chart.update);
+
+        return chart;
+    });
+
+    function test(filter) {
+        console.log(getData());
+    }
+
+    function getData() {
+        return [{
+            "name": "Data",
+            "color": "#e8e8ea",
+            "children": [
+                
+  {
+    "id": 4796,
+    "parentId": 3956,
+    "color": null,
+    "name": "Agriculture",
+    "children": [
+      {
+        "id": 5261,
+        "parentId": 4796,
+        "color": null,
+        "name": "Agricultural Engineering",
+        "children": [
+          {
+            "id": 5415,
+            "parentId": 5261,
+            "color": null,
+            "name": "Agricultural Consumer Products"
+          },
+          {
+            "id": 5416,
+            "parentId": 5261,
+            "color": null,
+            "name": "Agricultural Sensors"
+          },
+          {
+            "id": 5442,
+            "parentId": 5261,
+            "color": null,
+            "name": "Ecosystem Services/Management"
+          }
+        ]
+      },
+      {
+        "id": 5262,
+        "parentId": 4796,
+        "color": null,
+        "name": "Agronomics"
+      },
+      {
+        "id": 5273,
+        "parentId": 4796,
+        "color": null,
+        "name": "Aquaculture"
+      },
+      {
+        "id": 5300,
+        "parentId": 4796,
+        "color": null,
+        "name": "Crop Improvement",
+        "children": [
+          {
+            "id": 5436,
+            "parentId": 5300,
+            "color": null,
+            "name": "Crop Health"
+          },
+          {
+            "id": 5445,
+            "parentId": 5300,
+            "color": null,
+            "name": "Fertilizers/Biofertilizers"
+          },
+          {
+            "id": 5454,
+            "parentId": 5300,
+            "color": null,
+            "name": "Herbicides/Bioherbicides"
+          },
+          {
+            "id": 5456,
+            "parentId": 5300,
+            "color": null,
+            "name": "Insect/Disease Resistance"
+          }
+        ]
+      },
+      {
+        "id": 5318,
+        "parentId": 4796,
+        "color": null,
+        "name": "Entomology",
+        "children": [
+          {
+            "id": 5472,
+            "parentId": 5318,
+            "color": null,
+            "name": "Pesticide/Biopesticides"
+          }
+        ]
+      },
+      {
+        "id": 5322,
+        "parentId": 4796,
+        "color": null,
+        "name": "Food Science & Nutrition",
+        "children": [
+          {
+            "id": 5446,
+            "parentId": 5322,
+            "color": null,
+            "name": "Food Chemistry"
+          },
+          {
+            "id": 5447,
+            "parentId": 5322,
+            "color": null,
+            "name": "Food Equipment"
+          },
+          {
+            "id": 5448,
+            "parentId": 5322,
+            "color": null,
+            "name": "Food Packaging"
+          },
+          {
+            "id": 5449,
+            "parentId": 5322,
+            "color": null,
+            "name": "Food Processing"
+          },
+          {
+            "id": 5450,
+            "parentId": 5322,
+            "color": null,
+            "name": "Food Production"
+          },
+          {
+            "id": 5451,
+            "parentId": 5322,
+            "color": null,
+            "name": "Food Products"
+          },
+          {
+            "id": 5452,
+            "parentId": 5322,
+            "color": null,
+            "name": "Food Safety"
+          }
+        ]
+      },
+      {
+        "id": 5323,
+        "parentId": 4796,
+        "color": null,
+        "name": "Forestry"
+      },
+      {
+        "id": 5346,
+        "parentId": 4796,
+        "color": null,
+        "name": "Natural Rubber"
+      },
+      {
+        "id": 5361,
+        "parentId": 4796,
+        "color": null,
+        "name": "Plant Genetics"
+      },
+      {
+        "id": 7545,
+        "parentId": 4796,
+        "color": null,
+        "name": "Plant Hormones"
+      },
+      {
+        "id": 5362,
+        "parentId": 4796,
+        "color": null,
+        "name": "Plant Pathogens"
+      },
+      {
+        "id": 5363,
+        "parentId": 4796,
+        "color": null,
+        "name": "Plant Storage"
+      },
+      {
+        "id": 5364,
+        "parentId": 4796,
+        "color": null,
+        "name": "Plant Traits"
+      },
+      {
+        "id": 5365,
+        "parentId": 4796,
+        "color": null,
+        "name": "Plant Transgenics"
+      },
+      {
+        "id": 5366,
+        "parentId": 4796,
+        "color": null,
+        "name": "Plant Varieties",
+        "children": [
+          {
+            "id": 5473,
+            "parentId": 5366,
+            "color": null,
+            "name": "Plants (GMO)"
+          },
+          {
+            "id": 5474,
+            "parentId": 5366,
+            "color": null,
+            "name": "Plants (Non-GMO)"
+          }
+        ]
+      },
+      {
+        "id": 5408,
+        "parentId": 4796,
+        "color": null,
+        "name": "Wood/Paper/Pulp"
+      }
+    ]
+  },
+  {
+    "id": 4797,
+    "parentId": 3956,
+    "color": null,
+    "name": "Creative Works",
+    "children": [
+      {
+        "id": 5297,
+        "parentId": 4797,
+        "color": null,
+        "name": "Copyrights (Energy/Industrial)"
+      },
+      {
+        "id": 5298,
+        "parentId": 4797,
+        "color": null,
+        "name": "Copyrights (Food/Agriculture)"
+      },
+      {
+        "id": 5299,
+        "parentId": 4797,
+        "color": null,
+        "name": "Copyrights (Health/Wellness)"
+      }
+    ]
+  },
+  {
+    "id": 4798,
+    "parentId": 3956,
+    "color": null,
+    "name": "Energy, Cleantech & Environmental",
+    "children": [
+      {
+        "id": 5263,
+        "parentId": 4798,
+        "color": null,
+        "name": "Air/Water Purification"
+      },
+      {
+        "id": 5274,
+        "parentId": 4798,
+        "color": null,
+        "name": "Batteries"
+      },
+      {
+        "id": 5278,
+        "parentId": 4798,
+        "color": null,
+        "name": "Bioinformatics"
+      },
+      {
+        "id": 5283,
+        "parentId": 4798,
+        "color": null,
+        "name": "Biorefining/Bioproducts"
+      },
+      {
+        "id": 5317,
+        "parentId": 4798,
+        "color": null,
+        "name": "Energy Storage & Battery"
+      },
+      {
+        "id": 7540,
+        "parentId": 4798,
+        "color": null,
+        "name": "Fuel Cells"
+      },
+      {
+        "id": 5324,
+        "parentId": 4798,
+        "color": null,
+        "name": "Fuels"
+      },
+      {
+        "id": 5349,
+        "parentId": 4798,
+        "color": null,
+        "name": "Nuclear"
+      },
+      {
+        "id": 5359,
+        "parentId": 4798,
+        "color": null,
+        "name": "Petrochemical"
+      },
+      {
+        "id": 5367,
+        "parentId": 4798,
+        "color": null,
+        "name": "Pollution Control"
+      },
+      {
+        "id": 5369,
+        "parentId": 4798,
+        "color": null,
+        "name": "Powertrains"
+      },
+      {
+        "id": 5372,
+        "parentId": 4798,
+        "color": null,
+        "name": "Purification & Separation"
+      },
+      {
+        "id": 5376,
+        "parentId": 4798,
+        "color": null,
+        "name": "Remediation",
+        "children": [
+          {
+            "id": 5425,
+            "parentId": 5376,
+            "color": null,
+            "name": "Carbon Sequestration"
+          }
+        ]
+      },
+      {
+        "id": 5377,
+        "parentId": 4798,
+        "color": null,
+        "name": "Renewable Energy",
+        "children": [
+          {
+            "id": 5477,
+            "parentId": 5377,
+            "color": null,
+            "name": "Renewable/Biorenewable Energy"
+          },
+          {
+            "id": 5481,
+            "parentId": 5377,
+            "color": null,
+            "name": "Solar/Photovoltaic"
+          },
+          {
+            "id": 5485,
+            "parentId": 5377,
+            "color": null,
+            "name": "Wind"
+          }
+        ]
+      },
+      {
+        "id": 5392,
+        "parentId": 4798,
+        "color": null,
+        "name": "Superconductors/Semiconductors"
+      }
+    ]
+  },
+  {
+    "id": 4799,
+    "parentId": 3956,
+    "color": null,
+    "name": "Engineering & Physical Sciences",
+    "children": [
+      {
+        "id": 5291,
+        "parentId": 4799,
+        "color": null,
+        "name": "Communications & Networking",
+        "children": [
+          {
+            "id": 7539,
+            "parentId": 5291,
+            "color": null,
+            "name": "Antenna"
+          },
+          {
+            "id": 5468,
+            "parentId": 5291,
+            "color": null,
+            "name": "Networking"
+          },
+          {
+            "id": 5471,
+            "parentId": 5291,
+            "color": null,
+            "name": "Optical"
+          },
+          {
+            "id": 5475,
+            "parentId": 5291,
+            "color": null,
+            "name": "Radio-Frequency Identification (RFID)"
+          },
+          {
+            "id": 5487,
+            "parentId": 5291,
+            "color": null,
+            "name": "Wireless"
+          },
+          {
+            "id": 5486,
+            "parentId": 5291,
+            "color": null,
+            "name": "Wireless Communications Antennas"
+          }
+        ]
+      },
+      {
+        "id": 5305,
+        "parentId": 4799,
+        "color": null,
+        "name": "Devices & Instrumentation",
+        "children": [
+          {
+            "id": 5461,
+            "parentId": 5305,
+            "color": null,
+            "name": "Mass Spectrometry"
+          },
+          {
+            "id": 5463,
+            "parentId": 5305,
+            "color": null,
+            "name": "Microfluidics"
+          },
+          {
+            "id": 5470,
+            "parentId": 5305,
+            "color": null,
+            "name": "Nuclear Magnetic Resonance (NMR)"
+          },
+          {
+            "id": 5479,
+            "parentId": 5305,
+            "color": null,
+            "name": "Robotics"
+          }
+        ]
+      },
+      {
+        "id": 5314,
+        "parentId": 4799,
+        "color": null,
+        "name": "Electronics",
+        "children": [
+          {
+            "id": 5417,
+            "parentId": 5314,
+            "color": null,
+            "name": "Analog Circuits"
+          },
+          {
+            "id": 5420,
+            "parentId": 5314,
+            "color": null,
+            "name": "Assembly & Packaging"
+          },
+          {
+            "id": 5433,
+            "parentId": 5314,
+            "color": null,
+            "name": "Computer Hardware"
+          },
+          {
+            "id": 5434,
+            "parentId": 5314,
+            "color": null,
+            "name": "Consumer Goods"
+          },
+          {
+            "id": 5437,
+            "parentId": 5314,
+            "color": null,
+            "name": "Data Storage"
+          },
+          {
+            "id": 5439,
+            "parentId": 5314,
+            "color": null,
+            "name": "Digital Integrated Circuits"
+          },
+          {
+            "id": 5457,
+            "parentId": 5314,
+            "color": null,
+            "name": "Light-Emitting Diode (LED)"
+          },
+          {
+            "id": 5458,
+            "parentId": 5314,
+            "color": null,
+            "name": "Lighting"
+          },
+          {
+            "id": 5466,
+            "parentId": 5314,
+            "color": null,
+            "name": "Mixed Signal Processing"
+          },
+          {
+            "id": 7544,
+            "parentId": 5314,
+            "color": null,
+            "name": "Photonics"
+          },
+          {
+            "id": 5483,
+            "parentId": 5314,
+            "color": null,
+            "name": "Testing & Measurement"
+          }
+        ]
+      },
+      {
+        "id": 5334,
+        "parentId": 4799,
+        "color": null,
+        "name": "Industrial & Manufacturing"
+      },
+      {
+        "id": 5355,
+        "parentId": 4799,
+        "color": null,
+        "name": "Optronics/Photonics"
+      },
+      {
+        "id": 5383,
+        "parentId": 4799,
+        "color": null,
+        "name": "Semiconductors, MEMS & Nanotechnology"
+      },
+      {
+        "id": 5400,
+        "parentId": 4799,
+        "color": null,
+        "name": "Transportation & Automotive",
+        "children": [
+          {
+            "id": 5414,
+            "parentId": 5400,
+            "color": null,
+            "name": "Aerospace"
+          },
+          {
+            "id": 5422,
+            "parentId": 5400,
+            "color": null,
+            "name": "Automotive"
+          },
+          {
+            "id": 5421,
+            "parentId": 5400,
+            "color": null,
+            "name": "Automotive Power Systems"
+          },
+          {
+            "id": 5423,
+            "parentId": 5400,
+            "color": null,
+            "name": "Autonomous/Intelligent Vehicle Components"
+          },
+          {
+            "id": 5424,
+            "parentId": 5400,
+            "color": null,
+            "name": "Battery & Wireless Power Transfer"
+          },
+          {
+            "id": 5432,
+            "parentId": 5400,
+            "color": null,
+            "name": "Composites"
+          },
+          {
+            "id": 5443,
+            "parentId": 5400,
+            "color": null,
+            "name": "Emissions"
+          },
+          {
+            "id": 5459,
+            "parentId": 5400,
+            "color": null,
+            "name": "Machining"
+          },
+          {
+            "id": 5460,
+            "parentId": 5400,
+            "color": null,
+            "name": "Maratime"
+          },
+          {
+            "id": 7546,
+            "parentId": 5400,
+            "color": null,
+            "name": "Powertrains"
+          },
+          {
+            "id": 5480,
+            "parentId": 5400,
+            "color": null,
+            "name": "Safety Systems & Driver Enhancements"
+          },
+          {
+            "id": 5482,
+            "parentId": 5400,
+            "color": null,
+            "name": "Telematics"
+          },
+          {
+            "id": 5484,
+            "parentId": 5400,
+            "color": null,
+            "name": "Welding"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 4800,
+    "parentId": 3956,
+    "color": null,
+    "name": "Healthcare Portfolios",
+    "children": [
+      {
+        "id": 5264,
+        "parentId": 4800,
+        "color": null,
+        "name": "Anesthesiology"
+      },
+      {
+        "id": 5284,
+        "parentId": 4800,
+        "color": null,
+        "name": "Blood & Lymphatic Disease"
+      },
+      {
+        "id": 5303,
+        "parentId": 4800,
+        "color": null,
+        "name": "Dental"
+      },
+      {
+        "id": 5304,
+        "parentId": 4800,
+        "color": null,
+        "name": "Dermatology"
+      },
+      {
+        "id": 5306,
+        "parentId": 4800,
+        "color": null,
+        "name": "Diabetes, Metabolism, Endocrinology & Obesity"
+      },
+      {
+        "id": 5311,
+        "parentId": 4800,
+        "color": null,
+        "name": "Ear, Nose & Throat"
+      },
+      {
+        "id": 5315,
+        "parentId": 4800,
+        "color": null,
+        "name": "Emergency Services"
+      },
+      {
+        "id": 5325,
+        "parentId": 4800,
+        "color": null,
+        "name": "Gastroenterology & Digestive Disease"
+      },
+      {
+        "id": 5326,
+        "parentId": 4800,
+        "color": null,
+        "name": "General Surgery & Plastic Surgery"
+      },
+      {
+        "id": 5327,
+        "parentId": 4800,
+        "color": null,
+        "name": "Health Education, Medical Training & Operations"
+      },
+      {
+        "id": 5329,
+        "parentId": 4800,
+        "color": null,
+        "name": "Heart & Vascular"
+      },
+      {
+        "id": 5332,
+        "parentId": 4800,
+        "color": null,
+        "name": "Immunology, Autoimmune & Inflammation"
+      },
+      {
+        "id": 5335,
+        "parentId": 4800,
+        "color": null,
+        "name": "Infectious Diseases"
+      },
+      {
+        "id": 5344,
+        "parentId": 4800,
+        "color": null,
+        "name": "Musculoskeletal Disorders, Orthopedics/Bone"
+      },
+      {
+        "id": 5347,
+        "parentId": 4800,
+        "color": null,
+        "name": "Nephrology/Renal"
+      },
+      {
+        "id": 5348,
+        "parentId": 4800,
+        "color": null,
+        "name": "Neurology",
+        "children": [
+          {
+            "id": 5427,
+            "parentId": 5348,
+            "color": null,
+            "name": "Central Nervous System & Neurosciences"
+          },
+          {
+            "id": 5469,
+            "parentId": 5348,
+            "color": null,
+            "name": "Neurodegenerative Diseases"
+          }
+        ]
+      },
+      {
+        "id": 5351,
+        "parentId": 4800,
+        "color": null,
+        "name": "Oncology"
+      },
+      {
+        "id": 5353,
+        "parentId": 4800,
+        "color": null,
+        "name": "Ophthalmology"
+      },
+      {
+        "id": 6546,
+        "parentId": 4800,
+        "color": null,
+        "name": "Optometry"
+      },
+      {
+        "id": 5356,
+        "parentId": 4800,
+        "color": null,
+        "name": "Orphan Diseases"
+      },
+      {
+        "id": 5358,
+        "parentId": 4800,
+        "color": null,
+        "name": "Pediatrics"
+      },
+      {
+        "id": 5360,
+        "parentId": 4800,
+        "color": null,
+        "name": "Physical Medicine & Rehabilitation"
+      },
+      {
+        "id": 5373,
+        "parentId": 4800,
+        "color": null,
+        "name": "Radiology"
+      },
+      {
+        "id": 5375,
+        "parentId": 4800,
+        "color": null,
+        "name": "Regenerative Medicine / Tissue Engineering"
+      },
+      {
+        "id": 5378,
+        "parentId": 4800,
+        "color": null,
+        "name": "Reproductive Health: Obstetrics & Gynecology"
+      },
+      {
+        "id": 5379,
+        "parentId": 4800,
+        "color": null,
+        "name": "Respiratory & Pulmonary"
+      },
+      {
+        "id": 5386,
+        "parentId": 4800,
+        "color": null,
+        "name": "Sleep Disorders"
+      },
+      {
+        "id": 5399,
+        "parentId": 4800,
+        "color": null,
+        "name": "Transplantation"
+      },
+      {
+        "id": 5403,
+        "parentId": 4800,
+        "color": null,
+        "name": "Urology"
+      },
+      {
+        "id": 5409,
+        "parentId": 4800,
+        "color": null,
+        "name": "Wound Healing"
+      }
+    ]
+  },
+  {
+    "id": 4801,
+    "parentId": 3956,
+    "color": null,
+    "name": "Imaging",
+    "children": [
+      {
+        "id": 5337,
+        "parentId": 4801,
+        "color": null,
+        "name": "Magnetic Resonance Imaging (MRI)"
+      },
+      {
+        "id": 5340,
+        "parentId": 4801,
+        "color": null,
+        "name": "Microscopy"
+      },
+      {
+        "id": 5388,
+        "parentId": 4801,
+        "color": null,
+        "name": "Sonar"
+      },
+      {
+        "id": 5390,
+        "parentId": 4801,
+        "color": null,
+        "name": "Space"
+      },
+      {
+        "id": 5402,
+        "parentId": 4801,
+        "color": null,
+        "name": "Ultrasound"
+      },
+      {
+        "id": 5411,
+        "parentId": 4801,
+        "color": null,
+        "name": "X-Ray"
+      }
+    ]
+  },
+  {
+    "id": 4802,
+    "parentId": 3956,
+    "color": null,
+    "name": "Life Sciences",
+    "children": [
+      {
+        "id": 5280,
+        "parentId": 4802,
+        "color": null,
+        "name": "Biologics"
+      },
+      {
+        "id": 5281,
+        "parentId": 4802,
+        "color": null,
+        "name": "Biomarkers"
+      },
+      {
+        "id": 5307,
+        "parentId": 4802,
+        "color": null,
+        "name": "Diagnostics",
+        "children": [
+          {
+            "id": 5431,
+            "parentId": 5307,
+            "color": null,
+            "name": "Cognative Ability"
+          },
+          {
+            "id": 5453,
+            "parentId": 5307,
+            "color": null,
+            "name": "Hearing"
+          },
+          {
+            "id": 5455,
+            "parentId": 5307,
+            "color": null,
+            "name": "Imaging Agents"
+          },
+          {
+            "id": 5462,
+            "parentId": 5307,
+            "color": null,
+            "name": "Medical Imaging"
+          },
+          {
+            "id": 5464,
+            "parentId": 5307,
+            "color": null,
+            "name": "Microfluidics"
+          },
+          {
+            "id": 5465,
+            "parentId": 5307,
+            "color": null,
+            "name": "miRs"
+          },
+          {
+            "id": 5467,
+            "parentId": 5307,
+            "color": null,
+            "name": "Neonatal Vision & Neurological Function"
+          }
+        ]
+      },
+      {
+        "id": 5308,
+        "parentId": 4802,
+        "color": null,
+        "name": "Drug Delivery"
+      },
+      {
+        "id": 5309,
+        "parentId": 4802,
+        "color": null,
+        "name": "Drug Screening & Discovery"
+      },
+      {
+        "id": 5350,
+        "parentId": 4802,
+        "color": null,
+        "name": "Nutraceuticals"
+      },
+      {
+        "id": 5380,
+        "parentId": 4802,
+        "color": null,
+        "name": "RNAi/siRNA"
+      },
+      {
+        "id": 5387,
+        "parentId": 4802,
+        "color": null,
+        "name": "Small Molecules"
+      },
+      {
+        "id": 5391,
+        "parentId": 4802,
+        "color": null,
+        "name": "Stem Cells"
+      },
+      {
+        "id": 5397,
+        "parentId": 4802,
+        "color": null,
+        "name": "Therapeutics",
+        "children": [
+          {
+            "id": 5418,
+            "parentId": 5397,
+            "color": null,
+            "name": "Antimicrobials"
+          },
+          {
+            "id": 5419,
+            "parentId": 5397,
+            "color": null,
+            "name": "Antivirals"
+          },
+          {
+            "id": 5435,
+            "parentId": 5397,
+            "color": null,
+            "name": "Cosmeceutical"
+          },
+          {
+            "id": 5441,
+            "parentId": 5397,
+            "color": null,
+            "name": "Drugs/Pharmaceuticals"
+          }
+        ]
+      },
+      {
+        "id": 5404,
+        "parentId": 4802,
+        "color": null,
+        "name": "Vaccines"
+      }
+    ]
+  },
+  {
+    "id": 4803,
+    "parentId": 3956,
+    "color": null,
+    "name": "Materials",
+    "children": [
+      {
+        "id": 5260,
+        "parentId": 4803,
+        "color": null,
+        "name": "Adhesives"
+      },
+      {
+        "id": 5276,
+        "parentId": 4803,
+        "color": null,
+        "name": "Biocompatible"
+      },
+      {
+        "id": 5282,
+        "parentId": 4803,
+        "color": null,
+        "name": "Biomaterials"
+      },
+      {
+        "id": 5275,
+        "parentId": 4803,
+        "color": null,
+        "name": "Biorenewables"
+      },
+      {
+        "id": 5287,
+        "parentId": 4803,
+        "color": null,
+        "name": "Ceramics"
+      },
+      {
+        "id": 5289,
+        "parentId": 4803,
+        "color": null,
+        "name": "Chemicals",
+        "children": [
+          {
+            "id": 5428,
+            "parentId": 5289,
+            "color": null,
+            "name": "Chemical Analysis"
+          },
+          {
+            "id": 5429,
+            "parentId": 5289,
+            "color": null,
+            "name": "Chemical Catalysts"
+          },
+          {
+            "id": 5430,
+            "parentId": 5289,
+            "color": null,
+            "name": "Chemical Production"
+          }
+        ]
+      },
+      {
+        "id": 5290,
+        "parentId": 4803,
+        "color": null,
+        "name": "Coatings"
+      },
+      {
+        "id": 5294,
+        "parentId": 4803,
+        "color": null,
+        "name": "Composites"
+      },
+      {
+        "id": 5310,
+        "parentId": 4803,
+        "color": null,
+        "name": "Dyes"
+      },
+      {
+        "id": 5336,
+        "parentId": 4803,
+        "color": null,
+        "name": "Inorganics"
+      },
+      {
+        "id": 5339,
+        "parentId": 4803,
+        "color": null,
+        "name": "Metals"
+      },
+      {
+        "id": 5345,
+        "parentId": 4803,
+        "color": null,
+        "name": "Nanomaterials"
+      },
+      {
+        "id": 5368,
+        "parentId": 4803,
+        "color": null,
+        "name": "Polymers"
+      },
+      {
+        "id": 5370,
+        "parentId": 4803,
+        "color": null,
+        "name": "Processing"
+      },
+      {
+        "id": 5389,
+        "parentId": 4803,
+        "color": null,
+        "name": "Sorbent"
+      },
+      {
+        "id": 5393,
+        "parentId": 4803,
+        "color": null,
+        "name": "Superconductors"
+      },
+      {
+        "id": 5395,
+        "parentId": 4803,
+        "color": null,
+        "name": "Synthetics"
+      },
+      {
+        "id": 5398,
+        "parentId": 4803,
+        "color": null,
+        "name": "Thermoelectrics"
+      },
+      {
+        "id": 5407,
+        "parentId": 4803,
+        "color": null,
+        "name": "Welding"
+      }
+    ]
+  },
+  {
+    "id": 4804,
+    "parentId": 3956,
+    "color": null,
+    "name": "Medical Devices",
+    "children": [
+      {
+        "id": 5277,
+        "parentId": 4804,
+        "color": null,
+        "name": "Bioelectronics"
+      },
+      {
+        "id": 5296,
+        "parentId": 4804,
+        "color": null,
+        "name": "Consumable",
+        "children": [
+          {
+            "id": 5440,
+            "parentId": 5296,
+            "color": null,
+            "name": "Disposables"
+          }
+        ]
+      },
+      {
+        "id": 5319,
+        "parentId": 4804,
+        "color": null,
+        "name": "Equipment",
+        "children": [
+          {
+            "id": 5426,
+            "parentId": 5319,
+            "color": null,
+            "name": "Cell Separation/Sorting"
+          },
+          {
+            "id": 5444,
+            "parentId": 5319,
+            "color": null,
+            "name": "Facilities & Equipment"
+          },
+          {
+            "id": 5476,
+            "parentId": 5319,
+            "color": null,
+            "name": "Rehabilitation / Assistive Devices"
+          },
+          {
+            "id": 5478,
+            "parentId": 5319,
+            "color": null,
+            "name": "Research Equipment"
+          }
+        ]
+      },
+      {
+        "id": 5333,
+        "parentId": 4804,
+        "color": null,
+        "name": "Implantable",
+        "children": [
+          {
+            "id": 5438,
+            "parentId": 5333,
+            "color": null,
+            "name": "Dental",
+            "children": [
+              {
+                "id": 7541,
+                "parentId": 5438,
+                "color": null,
+                "name": "Mental Health"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 5341,
+        "parentId": 4804,
+        "color": null,
+        "name": "Minimally Invasive Devices"
+      },
+      {
+        "id": 5354,
+        "parentId": 4804,
+        "color": null,
+        "name": "Optics"
+      },
+      {
+        "id": 5394,
+        "parentId": 4804,
+        "color": null,
+        "name": "Surgical"
+      },
+      {
+        "id": 5410,
+        "parentId": 4804,
+        "color": null,
+        "name": "Wound Healing"
+      }
+    ]
+  },
+  {
+    "id": 5632,
+    "parentId": 3956,
+    "color": null,
+    "name": "Miscellaneous",
+    "children": [
+      {
+        "id": 7522,
+        "parentId": 5632,
+        "color": null,
+        "name": "Colors",
+        "children": [
+          {
+            "id": 7523,
+            "parentId": 7522,
+            "color": "#000",
+            "name": "Black"
+          },
+          {
+            "id": 7524,
+            "parentId": 7522,
+            "color": "#06F",
+            "name": "Blue"
+          },
+          {
+            "id": 7525,
+            "parentId": 7522,
+            "color": "#009",
+            "name": "Blue (Dark)"
+          },
+          {
+            "id": 7526,
+            "parentId": 7522,
+            "color": "#0CC",
+            "name": "Blue (Light)"
+          },
+          {
+            "id": 7527,
+            "parentId": 7522,
+            "color": "#FC3",
+            "name": "Gold"
+          },
+          {
+            "id": 7528,
+            "parentId": 7522,
+            "color": "#E1E1E1",
+            "name": "Gray (Light)"
+          },
+          {
+            "id": 7529,
+            "parentId": 7522,
+            "color": "#390",
+            "name": "Green"
+          },
+          {
+            "id": 7530,
+            "parentId": 7522,
+            "color": "#063",
+            "name": "Green (Dark)"
+          },
+          {
+            "id": 7531,
+            "parentId": 7522,
+            "color": "#9F0",
+            "name": "Green (Light)"
+          },
+          {
+            "id": 7532,
+            "parentId": 7522,
+            "color": "#C0F",
+            "name": "Magenta"
+          },
+          {
+            "id": 7533,
+            "parentId": 7522,
+            "color": "#F60",
+            "name": "Orange"
+          },
+          {
+            "id": 7534,
+            "parentId": 7522,
+            "color": "#C06",
+            "name": "Pink"
+          },
+          {
+            "id": 7535,
+            "parentId": 7522,
+            "color": "#60C",
+            "name": "Purple"
+          },
+          {
+            "id": 7536,
+            "parentId": 7522,
+            "color": "#C00",
+            "name": "Red"
+          },
+          {
+            "id": 7537,
+            "parentId": 7522,
+            "color": "#0FC",
+            "name": "Turquoise"
+          },
+          {
+            "id": 7538,
+            "parentId": 7522,
+            "color": "#ffe135",
+            "name": "Yellow"
+          }
+        ]
+      },
+      {
+        "id": 5633,
+        "parentId": 5632,
+        "color": null,
+        "name": "EBE"
+      },
+      {
+        "id": 5634,
+        "parentId": 5632,
+        "color": null,
+        "name": "Joint Venture"
+      },
+      {
+        "id": 6510,
+        "parentId": 5632,
+        "color": null,
+        "name": "Patent Monetization"
+      }
+    ]
+  },
+  {
+    "id": 7543,
+    "parentId": 3956,
+    "color": null,
+    "name": "Other Portfolios",
+    "children": [
+      {
+        "id": 7542,
+        "parentId": 7543,
+        "color": null,
+        "name": "Military"
+      }
+    ]
+  },
+  {
+    "id": 4805,
+    "parentId": 3956,
+    "color": null,
+    "name": "Research & Design Tools",
+    "children": [
+      {
+        "id": 5268,
+        "parentId": 4805,
+        "color": null,
+        "name": "Animal Models"
+      },
+      {
+        "id": 5272,
+        "parentId": 4805,
+        "color": null,
+        "name": "Antibodies"
+      },
+      {
+        "id": 5285,
+        "parentId": 4805,
+        "color": null,
+        "name": "Cell Lines"
+      },
+      {
+        "id": 5286,
+        "parentId": 4805,
+        "color": null,
+        "name": "Cell Separation/Sorting"
+      },
+      {
+        "id": 5313,
+        "parentId": 4805,
+        "color": null,
+        "name": "Electronic Testing"
+      },
+      {
+        "id": 5330,
+        "parentId": 4805,
+        "color": null,
+        "name": "Human Factor & Ergonomic Design"
+      },
+      {
+        "id": 5371,
+        "parentId": 4805,
+        "color": null,
+        "name": "Protein"
+      },
+      {
+        "id": 5374,
+        "parentId": 4805,
+        "color": null,
+        "name": "Reagents"
+      },
+      {
+        "id": 5381,
+        "parentId": 4805,
+        "color": null,
+        "name": "Screening Assays"
+      },
+      {
+        "id": 5385,
+        "parentId": 4805,
+        "color": null,
+        "name": "Simulators & Modeling Tools"
+      },
+      {
+        "id": 5405,
+        "parentId": 4805,
+        "color": null,
+        "name": "Vectors & Plasmids"
+      }
+    ]
+  },
+  {
+    "id": 4806,
+    "parentId": 3956,
+    "color": null,
+    "name": "Sensors & Controls",
+    "children": [
+      {
+        "id": 5279,
+        "parentId": 4806,
+        "color": null,
+        "name": "Biologic"
+      },
+      {
+        "id": 5288,
+        "parentId": 4806,
+        "color": null,
+        "name": "Chemical & Gas"
+      },
+      {
+        "id": 5343,
+        "parentId": 4806,
+        "color": null,
+        "name": "Motion & Force"
+      },
+      {
+        "id": 5357,
+        "parentId": 4806,
+        "color": null,
+        "name": "Particle & Radiation"
+      }
+    ]
+  },
+  {
+    "id": 4807,
+    "parentId": 3956,
+    "color": null,
+    "name": "Software & Information Technology",
+    "children": [
+      {
+        "id": 5292,
+        "parentId": 4807,
+        "color": null,
+        "name": "Communications & Networking"
+      },
+      {
+        "id": 5295,
+        "parentId": 4807,
+        "color": null,
+        "name": "Computer-Aided Design & Engineering"
+      },
+      {
+        "id": 5301,
+        "parentId": 4807,
+        "color": null,
+        "name": "Data Mining"
+      },
+      {
+        "id": 5302,
+        "parentId": 4807,
+        "color": null,
+        "name": "Databases"
+      },
+      {
+        "id": 5312,
+        "parentId": 4807,
+        "color": null,
+        "name": "Education & Training"
+      },
+      {
+        "id": 5316,
+        "parentId": 4807,
+        "color": null,
+        "name": "Energy/Industrial"
+      },
+      {
+        "id": 5320,
+        "parentId": 4807,
+        "color": null,
+        "name": "Food/Agriculture"
+      },
+      {
+        "id": 5328,
+        "parentId": 4807,
+        "color": null,
+        "name": "Healthcare/Bioinformatics"
+      },
+      {
+        "id": 5331,
+        "parentId": 4807,
+        "color": null,
+        "name": "Human Machine Interface"
+      },
+      {
+        "id": 5338,
+        "parentId": 4807,
+        "color": null,
+        "name": "Manufacturing"
+      },
+      {
+        "id": 5342,
+        "parentId": 4807,
+        "color": null,
+        "name": "Mobile Application"
+      },
+      {
+        "id": 5352,
+        "parentId": 4807,
+        "color": null,
+        "name": "Open Source"
+      },
+      {
+        "id": 5382,
+        "parentId": 4807,
+        "color": null,
+        "name": "Security"
+      },
+      {
+        "id": 5384,
+        "parentId": 4807,
+        "color": null,
+        "name": "Signal Processing"
+      },
+      {
+        "id": 5396,
+        "parentId": 4807,
+        "color": null,
+        "name": "Telematics"
+      },
+      {
+        "id": 5401,
+        "parentId": 4807,
+        "color": null,
+        "name": "Transportation"
+      },
+      {
+        "id": 5406,
+        "parentId": 4807,
+        "color": null,
+        "name": "Web & Internet"
+      }
+    ]
+  },
+  {
+    "id": 4808,
+    "parentId": 3956,
+    "color": null,
+    "name": "Veterinary Medicine",
+    "children": [
+      {
+        "id": 5265,
+        "parentId": 4808,
+        "color": null,
+        "name": "Animal Diagnostics"
+      },
+      {
+        "id": 5266,
+        "parentId": 4808,
+        "color": null,
+        "name": "Animal Genetics"
+      },
+      {
+        "id": 5267,
+        "parentId": 4808,
+        "color": null,
+        "name": "Animal Medical Devices"
+      },
+      {
+        "id": 5269,
+        "parentId": 4808,
+        "color": null,
+        "name": "Animal Nutrition"
+      },
+      {
+        "id": 5270,
+        "parentId": 4808,
+        "color": null,
+        "name": "Animal Reproduction"
+      },
+      {
+        "id": 5271,
+        "parentId": 4808,
+        "color": null,
+        "name": "Animal Therapeutics"
+      },
+      {
+        "id": 5293,
+        "parentId": 4808,
+        "color": null,
+        "name": "Companion Animal Health"
+      },
+      {
+        "id": 5321,
+        "parentId": 4808,
+        "color": null,
+        "name": "Food Animal Health"
+      }
+    ]
+  }
+            ]
+        }];
+    }
+
+</script>
+</body>
+</html>
